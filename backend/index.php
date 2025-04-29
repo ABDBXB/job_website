@@ -1,7 +1,5 @@
 <?php
 include __DIR__ . '/header.php';
-$welcome_massage = "Welcome to our server";
-echo $welcome_massage;
 ?>
 
 <!--home section start-->
@@ -49,7 +47,7 @@ $result = $conn->query($sql);
 
         <?php if ($result->num_rows > 0): ?>
             <?php while($row = $result->fetch_assoc()): 
-                var_dump($row);
+
                 ?>
                 <div class="box">
                     <div class="company">
