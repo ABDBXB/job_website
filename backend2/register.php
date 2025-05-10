@@ -7,7 +7,7 @@
         <title>Register</title>
 
         <!-- Css File-->
-        <link rel="stylesheet" href="css.css">
+        <link rel="stylesheet" href="../dist/css/style.min.css">
          <link rel="stylesheet"
          href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
@@ -46,7 +46,7 @@
     $email = $_POST['email'];
     $checkEmail->bindParam("email",  $email);
     $checkEmail->execute();
-
+    
       if($checkEmail->rowCount()>0){
         echo'<div>This account alrady exists </div>';
       }
@@ -55,8 +55,9 @@
         $email= $_POST['email'];
         $password= $_POST['pass'];
         $c_password= $_POST['c_pass'];
-
-        $addusers=$database->prepare("INSERT INTO users(name,email,password,code) VALUES(:name,:email,:password,:code) ");
+      if($password!==$c_password){
+      echo'<div>The passwords do not match</div>';
+      }else {  $addusers=$database->prepare("INSERT INTO users(name,email,password,code) VALUES(:name,:email,:password,:code) ");
         $addusers->bindParam("name", $name);
         $addusers->bindParam("email", $email);
         $addusers->bindParam("password",$password);
@@ -76,7 +77,8 @@
         else{
             echo'<div>Something went Wrong</div>';
         }
-        }
+        }};
+      
 
        
       }

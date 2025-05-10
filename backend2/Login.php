@@ -7,7 +7,7 @@
         <title>Login</title>
 
         <!-- Css File-->
-         <link rel="stylesheet" href="css.css">
+         <link rel="stylesheet" href="../dist/css/style.min.css">
          <link rel="stylesheet"
          href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
@@ -50,13 +50,15 @@
         
 
           //User or Admin
-          if($user->user_type==="user"){
-            echo'<div>Hello user</div>';
-            header("Location:Home.php");
+          if($user->user_type==="seeker"){
+            
+            header("Location:index.php",true);
+    
+            
            
-          }else if($user->user_type==="admin"){
+          }else if($user->user_type==="'recruiter'"){
             echo'<div>Hello admin</div>';
-           header("Location:Admin\Admin.php",true);
+           header("Location:recruitee\index.php");
           }
 
         }else{
