@@ -78,7 +78,6 @@ if(isset($_GET['btn-search'])){
 
                 <div class="box-container"> 
                    <?php
-                
                  $getItem =$database->prepare("SELECT Jobs.*, Companies.name AS company_name 
                                                 FROM Jobs 
                                                JOIN Companies ON Jobs.company_id = Companies.id 
@@ -106,7 +105,7 @@ if(isset($_GET['btn-search'])){
                          <div class="flex-btn">
                            <form  method="POST">
                             
-                              <a href="apply.php?apply=<?php echo $Result['job_id']?>" class="btn">Apply</a>
+                           <a href="apply.php?apply=<?php echo $Result['job_id']?>" class="btn">Apply</a>
                           
                              
                            </form>
