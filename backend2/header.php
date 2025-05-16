@@ -1,3 +1,11 @@
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +39,16 @@
                 <a href="Admin.html">Admin</a>
 
             </nav>
-            <a href="login.php" class="btn" style="margin-top:0% ;">Login</a>
+            <?php
+            if (!isset($_SESSION["user"]) && empty($_SESSION["user"]->user_id)) {
+                $button_text = "Login";
+                $button_url = "login.php";
+            }
+            if (isset($_SESSION["user"]) && !empty($_SESSION["user"]->user_id)) {
+                $button_text = "My Applications";
+                $button_url = "user_applications.php";
+            }
+            ?>
+            <a href="<?php echo $button_url ?>" class="btn" style="margin-top:0% ;"><?= $button_text ?></a>
         </section>
     </header>

@@ -52,7 +52,7 @@
           //User or Admin
           if($user->user_type==="seeker"){
             
-            header("Location:apply.php?job_id=$redirect_job",true);
+            header("Location:index.php",true);
     
             
            
