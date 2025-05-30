@@ -45,7 +45,7 @@ if (isset($_GET['btn-search'])) {
 
       <div class="box">
          <div class="company">
-            <img src="" alt="">
+          
             <div>
                <h3><?php echo $Result['company_name'] ?></h3>
                <p><?php echo $Result['date_posted'] ?></p>
@@ -93,7 +93,6 @@ if (isset($_GET['btn-search'])) {
       ?>
          <div class="box">
             <div class="company">
-               <img src="" alt="">
                <div>
                   <h3><?php echo $Result['company_name'] ?></h3>
                   <p><?php echo $Result['date_posted'] ?></p>

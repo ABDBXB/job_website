@@ -38,7 +38,6 @@ foreach($getjobs AS $Result){
                       <input type="text" placeholder="Salary" name="salary"  value="'.$Result['salary'].'" class="box">
                       <input type="text" placeholder="Job type" name="job_type"  value="'.$Result['job_type'].'" class="box">
                       <input type="text" placeholder="description" name="description" value="'.$Result['description'].'" class="box"> 
-                      <input type="file" accept="img/png, img/jpeg, img/jpg" name="company-image" class="box">
                      <button class="btn-admin" name="update" type="submit" value= "'.$Result['job_id'].' ">update</button>
                       <a href="mangejob.php" class="btn-admin">Back</a>
                 </form>
@@ -59,7 +58,7 @@ foreach($getjobs AS $Result){
 
       $getId=$_POST['update'];
       $update->bindParam("id",$getId);
-      if(  $update->execute()){ echo'seccess';
+      if($update->execute()){ echo'seccess';
       } else{echo'not de';}
     
     

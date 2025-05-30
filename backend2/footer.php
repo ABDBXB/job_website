@@ -3,17 +3,17 @@
     <section class="grid">
         <div class="box">
             <h3>quick links </h3>
-            <a href="Home.html"><i></i>home</a>
-            <a href="About.html"><i></i>about</a>
-            <a href="Jobs.html"><i></i>jobs</a>
+            <a href="index.php"><i></i>home</a>
+            <a href="About.php"><i></i>about</a>
+            <a href="index.php"><i></i>jobs</a>
         </div>
 
         <div class="box">
             <h3>extra links </h3>
 
-            <a href="register.html"><i></i> register</a>
-            <a href="Login.html"><i></i> Login</a>
-            <a href="register.html"><i></i>account</a>
+            <a href="register.php"><i></i> register</a>
+            <a href="Login.php"><i></i> Login</a>
+            <a href="register.php"><i></i>account</a>
         </div>
 
         <div class="box">

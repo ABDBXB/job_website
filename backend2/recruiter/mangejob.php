@@ -14,7 +14,7 @@ if(isset($_POST['add_job'])){
     $salary =$_POST['salary'];
     $jobtype =$_POST['job-type'];
     $description =$_POST['description'];
-    $companyimage =$_POST['company-image'];
+  
 
     
 $addcompany=$database->prepare(" INSERT INTO companies(name) VALUE('$companyname');");
@@ -37,8 +37,6 @@ $company_id=$database->lastInsertId();
           <input type="text" placeholder="Salary" name="salary" maxlength="20" class="box">
           <input type="text" placeholder="Job type" name="job-type" maxlength="20" class="box">
           <input type="text" placeholder="description" name="description" maxlength="500" class="box"> 
-          <div style="font-size: 1.8rem; color: #777;text-transform: capitalize;padding-left: 1rem;">Company image</div>
-          <input type="file" accept="img/png, img/jpeg, img/jpg" name="company-image" class="box">
           <input type="submit" class="btn-admin" name="add_job" value="Add a job">
     </form>
 </div>
@@ -55,7 +53,6 @@ $company_id=$database->lastInsertId();
                             <td>Salary</td>
                             <td>Job Type</td>
                             <td>Date Posted</td>
-                            <td>Image</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -78,10 +75,8 @@ $company_id=$database->lastInsertId();
                          <td><?php echo $Result['salary']?></td>
                          <td><?php echo $Result['job_type']?></td>
                          <td><?php echo $Result['date_posted'] ?></td>
-                            
-                             <td><img src="file:///C:/xampp/htdocs/Admin/Admin.html" height="100" alt=""></td>
-                        <td>
-                            <form method="POST">
+                          <td>
+                         <form method="POST">
                             <button class="btn-delete" name="delete" type="submit" value= "<?php echo $Result['job_id']?> ">Delete</button>
                             <a href="Edit.php?edit=<?php echo $Result['job_id']?>" class="btn-edit">Edit</a></form>
                            

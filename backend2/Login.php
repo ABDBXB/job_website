@@ -21,7 +21,7 @@
                 <h3>Welcome back!</h3>
                 <input type="email" required name="email" maxlength="50" placeholder="enter your email" class="input" >
                 <input type="password" required name="pass" maxlength="20" placeholder="enter your password" class="input" >
-                 <P><a href="forgetPassword.php" >Forgot your password?</a></P>
+                 <P><a href="reset.php" >Forgot your password?</a></P>
                  <p>don't have an account? <a href="register.php" >register now</a></p>
                
                 <input type="submit" value="Login" name="submit" class="btn">
@@ -39,7 +39,8 @@
 
       $login=$database->prepare("SELECT *FROM users WHERE email=:email AND password=:password ");
       $login->bindParam("email", $_POST['email']);
-      $login->bindParam("password",$_POST['pass']);
+      $passwordUser=sha1($_POST['pass']);
+      $login->bindParam("password", $passwordUser);
       $login->execute();
       if($login-> rowCount()===1){
         $user=  $login->fetchObject() ;
@@ -56,9 +57,9 @@
     
             
            
-          }else if($user->user_type==="'recruiter'"){
-            echo'<div>Hello admin</div>';
-           header("Location:recruitee\index.php");
+          }else if($user->user_type==="recruiter"){
+           
+           header("Location:recruiter\mangejob.php",true);
           }
 
         }else{

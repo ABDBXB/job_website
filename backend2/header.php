@@ -30,14 +30,12 @@ if (session_status() === PHP_SESSION_NONE) {
     <header class="header">
         <section class="flex">
             <div class='bx bx-menu' id="menu-btn"></div>
-            <a href="Home.html" class="logo"> JobSearch </a>
+            <a href="index.php" class="logo"> JobSearch </a>
 
             <nav class="navbar">
-                <a href="Home.html">Home</a>
-                <a href="About.html">About Us</a>
-                <a href="Bot.html">Bot</a>
-                <a href="Admin.html">Admin</a>
-
+                <a href="index.php">Home</a>
+                <a href="About.php">About Us</a>
+                
             </nav>
             <?php
             if (!isset($_SESSION["user"]) && empty($_SESSION["user"]->user_id)) {

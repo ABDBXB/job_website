@@ -25,7 +25,16 @@
                     <a href="Application.php">Application</a>
 
                 </nav>                   
-                <form><button  type='submit'  name='submit' class='btn' >Logout</button></form>
+                <form><button  type='submit'  name='logout' class='btn' name=''>Logout</button></form>
+                <?php session_start();
+                if(isset($_SESSION['user'])){
+                if($_SESSION['user']->user_type==="recruiter"){}}
+       
+                if(isset($_GET['logout'])){
+                 session_unset();
+                 session_destroy();
+                 header("Location:../Login.php");
+                }?>
         
             </section>
           </header>

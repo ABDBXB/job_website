@@ -31,9 +31,6 @@
           </div>
           <!--account section end-->
      </body>
-
-
-
      <?php
      
     $username="root";
@@ -53,34 +50,32 @@
       else{
         $name= $_POST['name'];
         $email= $_POST['email'];
-        $password= $_POST['pass'];
-        $c_password= $_POST['c_pass'];
+        $password=sha1($_POST['pass']);
+        $c_password= sha1($_POST['c_pass']);
       if($password!==$c_password){
       echo'<div>The passwords do not match</div>';
       }else {  $addusers=$database->prepare("INSERT INTO users(name,email,password,code) VALUES(:name,:email,:password,:code) ");
         $addusers->bindParam("name", $name);
         $addusers->bindParam("email", $email);
         $addusers->bindParam("password",$password);
-        $code=md5(date("h:i:s"));
+        $code=rand(100000, 999999);
         $addusers->bindParam("code",$code);
         if($addusers->execute()){
              echo'<div>An account has been created successfully </div>';
-             require_once "mail.php";
+             //email massage
+             require_once 'mail1.php';
              $mail->addAdress($email);
              $mail->Subject="Email verification code";
              $mail->Body= '<h1>Thank you for registering on our website </h>'
              ."<div> Account verification link "."<div>".
              "<a href='active.php?code=".$code."'>". "active.php"."?code=" .$code."</a>";
-             $mail->SetForm("sulafakh22@gmail.com" , "JOBSearch");
-             $mail->send();
+            $mail->setFrom('abd.albasaleh.123@gmail.com', 'Job Website');
+            $mail->send();
         }
         else{
             echo'<div>Something went Wrong</div>';
         }
-        }};
-      
-
-       
+        }}
       }
 
     ?>
