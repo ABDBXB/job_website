@@ -23,6 +23,7 @@
                 <input type="email" required name="email" maxlength="50" placeholder="enter your email" class="input" >
                 <input type="password" required name="pass" maxlength="20" placeholder="enter your password" class="input" >
                 <input type="password" required name="c_pass" maxlength="20" placeholder="confirm your password" class="input" >
+                <input type="text" required name="security_question" maxlength="20" placeholder="What is the name of your best childhood friend?" class="input" >
                 <p>already have an account? <a href="Login.php" >Login now</a></p>
                 <input type="submit" value="register" name="submit" class="btn">
 
@@ -52,30 +53,19 @@
         $email= $_POST['email'];
         $password=sha1($_POST['pass']);
         $c_password= sha1($_POST['c_pass']);
+        $security_question=$_POST(['security_question']);
       if($password!==$c_password){
       echo'<div>The passwords do not match</div>';
-      }else {  $addusers=$database->prepare("INSERT INTO users(name,email,password,code) VALUES(:name,:email,:password,:code) ");
+      }else {  $addusers=$database->prepare("INSERT INTO users(name,email,password,code,security_question) VALUES(:name,:email,:password,:code,:security_question) ");
         $addusers->bindParam("name", $name);
         $addusers->bindParam("email", $email);
         $addusers->bindParam("password",$password);
         $code=rand(100000, 999999);
         $addusers->bindParam("code",$code);
-        if($addusers->execute()){
-             echo'<div>An account has been created successfully </div>';
-             //email massage
-             require_once 'mail1.php';
-             $mail->addAdress($email);
-             $mail->Subject="Email verification code";
-             $mail->Body= '<h1>Thank you for registering on our website </h>'
-             ."<div> Account verification link "."<div>".
-             "<a href='active.php?code=".$code."'>". "active.php"."?code=" .$code."</a>";
-            $mail->setFrom('abd.albasaleh.123@gmail.com', 'Job Website');
-            $mail->send();
-        }
-        else{
-            echo'<div>Something went Wrong</div>';
+        $addusers->bindParam("security_question",$security_question);
+        $addusers->execute();
+        
         }
         }}
-      }
 
     ?>

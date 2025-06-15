@@ -21,7 +21,7 @@
                 <h3>Welcome back!</h3>
                 <input type="email" required name="email" maxlength="50" placeholder="enter your email" class="input" >
                 <input type="password" required name="pass" maxlength="20" placeholder="enter your password" class="input" >
-                 <P><a href="reset.php" >Forgot your password?</a></P>
+                 <P><a href="security_question.php" >Forgot your password?</a></P>
                  <p>don't have an account? <a href="register.php" >register now</a></p>
                
                 <input type="submit" value="Login" name="submit" class="btn">
@@ -41,11 +41,9 @@
       $login->bindParam("email", $_POST['email']);
       $passwordUser=sha1($_POST['pass']);
       $login->bindParam("password", $passwordUser);
-      $login->execute();
-      if($login-> rowCount()===1){
+      ;
+      if($login->execute()){
         $user=  $login->fetchObject() ;
-        if($user->activated==1){
-          echo'<div>Hello</div>';
           session_start();
           $_SESSION['user']=$user;
         
@@ -53,18 +51,14 @@
           //User or Admin
           if($user->user_type==="seeker"){
             
-            header("Location:index.php",true);
+            header("Location:index.php");
     
             
            
           }else if($user->user_type==="recruiter"){
            
-           header("Location:recruiter\mangejob.php",true);
+           header("Location:recruiter\mangejob.php");
           }
-
-        }else{
-            echo'<div>this account not acctive</div>';
-        }
 
       }else{
         echo'<div>password or email is incorrect</div>';
