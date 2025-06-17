@@ -35,7 +35,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <nav class="navbar">
                 <a href="index.php">Home</a>
                 <a href="About.php">About Us</a>
-                <a href="http://localhost:3000/">Chatbot</a>
+                <a href="\Chatbot-reactjs\index.html">Chatbot</a>
                 
             </nav>
             <?php
