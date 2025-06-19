@@ -46,8 +46,6 @@
         $user=  $login->fetchObject() ;
           session_start();
           $_SESSION['user']=$user;
-        
-
           //User or Admin
           if($user->user_type==="seeker"){
             
@@ -55,10 +53,9 @@
     
             
            
-          }else if($user->user_type==="recruiter"){
-           
-           header("Location:recruiter\mangejob.php");
-          }
+          }else if($user->user_type==="recruiter"){	
+           header("Location:recruiter\mangejob.php",true);
+          }else{"no user type";}
 
       }else{
         echo'<div>password or email is incorrect</div>';

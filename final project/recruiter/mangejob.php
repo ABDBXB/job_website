@@ -22,7 +22,7 @@ $addcompany->execute();
 $company_id=$database->lastInsertId();
 
     $addjob=$database->prepare("INSERT INTO jobs(company_id,job_title,location,salary,job_type,description)
-    VALUES('$companyname',' $jobname ',' $location',' $salary ',' $jobtype', '$description')");
+    VALUES(1,' $jobname ',' $location',' $salary ',' $jobtype', '$description')");
     if($addjob->execute()){echo "job add successfully";}else{echo "could not add the job";};}
 ?>
 
